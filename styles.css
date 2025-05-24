@@ -8,6 +8,22 @@ body {
     margin: 0;
 }
 
+#header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    margin: 8px;
+}
+
+#resize-button {
+    margin: 8px;
+}
+#credit {
+    padding: 8px;
+}
+
 #container {
     display: flex;
     flex-direction: column;
