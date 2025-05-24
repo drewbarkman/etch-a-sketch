@@ -23,8 +23,10 @@ function removeGrid() {
 function addHover() {
     const gridItems = document.querySelectorAll('.grid')
     gridItems.forEach((item) => {
+        item.style.opacity = 0;
         item.addEventListener('mouseenter', () => {
-            // item.style.opacity += 0.1;
+            const current_val = +item.style.opacity;
+            if (current_val < 1) {item.style.opacity = current_val + 0.1;};
             item.classList.add('hover');
         });
         item.addEventListener('mouseleave', () => {
