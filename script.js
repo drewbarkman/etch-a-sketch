@@ -13,3 +13,14 @@ function addGrid(sideLength) {
 }
 
 addGrid(16)
+
+const gridItems = document.querySelectorAll('.grid')
+
+gridItems.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+        item.classList.add('hover');
+    });
+    item.addEventListener('mouseleave', () => {
+        setTimeout(() => {item.classList.remove('hover');}, 100)
+    })
+})
