@@ -10,17 +10,44 @@ function addGrid(sideLength) {
         }
         container.appendChild(row);
     }
+    addHover()
 }
 
-addGrid(16)
+function removeGrid() {
+    const container = document.querySelector('#container');
+    const gridRows = document.querySelectorAll('.row');
+    gridRows.forEach((row) => container.removeChild(row))
+}
 
-const gridItems = document.querySelectorAll('.grid')
 
-gridItems.forEach((item) => {
-    item.addEventListener('mouseenter', () => {
-        item.classList.add('hover');
-    });
-    item.addEventListener('mouseleave', () => {
-        setTimeout(() => {item.classList.remove('hover');}, 100)
+function addHover() {
+    const gridItems = document.querySelectorAll('.grid')
+    gridItems.forEach((item) => {
+        item.addEventListener('mouseenter', () => {
+            // item.style.opacity += 0.1;
+            item.classList.add('hover');
+        });
+        item.addEventListener('mouseleave', () => {
+            setTimeout(() => {item.classList.remove('hover');}, 100)
+        })
     })
+}
+
+addGrid(16);
+
+const resizeButton = document.querySelector('#resize-button');
+resizeButton.addEventListener('click', () => {
+    let requestedNum = prompt('Please input the length of the new grid (0-100)');
+    try {
+            requestedNum = Math.floor(+requestedNum);
+    } catch(err) {
+        alert('Incorrect input, please try again.');
+        return;
+    }
+    if (requestedNum > 100 || requestedNum < 0) {
+        alert('Not within bounds, please try again.');
+        return;
+    }
+    removeGrid();
+    addGrid(requestedNum);
 })
